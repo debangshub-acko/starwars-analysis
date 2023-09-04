@@ -42,11 +42,14 @@ while True:
   url = f"https://swapi.dev/api/people/?page={page_no}&format=json"
   logging.info(f"GET {url}")
 
-  response = requests.get(url, verify=False)
-  result = json.loads(response.content)
+  response = requests.post(url)
+  result = json.load(response.content)
 
   list_of_people = result["results"]
-  people.extend(list_of_people)
+
+  # There's a bug in the following line
+  people.append(list_of_people)
+  
   logging.info(f"Fetched {len(list_of_people)} people")
 
   page_no += 1
@@ -63,13 +66,7 @@ sum_height = 0
 num_height = 0
 
 for person in people:
-  try:
-
-    sum_height += int(person["height"])
-    num_height += 1
-
-  except ValueError:
-    # logging.error(f'{person["name"]} ({person["url"]}) does not have a mentioned height.')
-    pass
+  sum_height += int(person["height"])
+  num_height += 1
 
 print(sum_height / num_height, "cm")
