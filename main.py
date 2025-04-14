@@ -61,12 +61,13 @@ while True:
 # Section 2
 # The objective of this section is to compute the average height 
 # of all the fetched charecters from the Star Wars API.
+# Hint: Need to call another API given in the response object
 
-sum_height = 0
-num_height = 0
+# sum_height = 0
+# num_height = 0
 
-for person in people:
-  sum_height += int(person["height"])
-  num_height += 1
+# for person in people:
+#   sum_height += int(person["height"])
+#   num_height += 1
 
-print(sum_height / num_height, "cm")
+# print(sum_height / num_height, "cm")
