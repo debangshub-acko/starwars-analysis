@@ -39,7 +39,7 @@ page_no = 1
 people = []
 
 while True:
-  url = f"https://swapi.dev/api/people/?page={page_no}&format=json"
+  url = f"https://swapi.tech/api/people/?page={page_no}&limit=10"
   logging.info(f"GET {url}")
 
   response = requests.post(url)
